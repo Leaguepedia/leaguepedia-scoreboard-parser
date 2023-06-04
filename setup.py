@@ -11,7 +11,7 @@ setuptools.setup(
     description="Parser for Leaguepedia scoreboards",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/arbolitoloco1/leaguepedia-scoreboard-parser",
+    url="https://github.com/Leaguepedia/leaguepedia-scoreboard-parser",
     packages=setuptools.find_packages(),
     python_requires='>=3.9',
     install_requires=[]
