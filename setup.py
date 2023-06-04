@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="leaguepedia-scoreboard-parser",
-    version="0.1.8",
+    version="0.1.9",
     author="RheingoldRiver",
     author_email="river.esports@gmail.com",
     description="Parser for Leaguepedia scoreboards",
