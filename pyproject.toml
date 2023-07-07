@@ -7,11 +7,11 @@ packages = [{include = "leaguepedia_sb_parser"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-lol-dto = "^2.0.0"
-lol-id-tools = "^2.0.1"
+lol-dto = "2.0.0"
+lol-id-tools = "2.0.1"
 mwrogue = "^0.1.5"
 lol-qq-parser = {git = "https://github.com/mrtolkien/lol_qq_parser.git"}
-riot-transmute = "^2.1.2"
+riot-transmute = "2.1.2"
 riotwatcher = "^3.2.3"
 bayes_lol_client = "^1.0.0"
 
