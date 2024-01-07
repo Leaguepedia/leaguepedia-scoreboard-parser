@@ -11,7 +11,7 @@ lol-dto = "2.0.0"
 lol-id-tools = "2.0.1"
 mwrogue = "^0.1.5"
 lol-qq-parser = {git = "https://github.com/mrtolkien/lol_qq_parser.git"}
-riot-transmute = {git = "https://github.com/Leaguepedia/riot_transmute", rev = "8dc2cc55ae0107d6c01dab2223a39a68a087608f"}
+riot-transmute = {git = "https://github.com/Leaguepedia/riot_transmute"}
 riotwatcher = "^3.2.3"
 bayes_lol_client = "^1.0.0"
 
