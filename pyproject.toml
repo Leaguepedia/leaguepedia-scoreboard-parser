@@ -8,7 +8,7 @@ packages = [{include = "leaguepedia_sb_parser"}]
 [tool.poetry.dependencies]
 python = "^3.9"
 lol-dto = "2.0.0"
-lol-id-tools = "2.0.1"
+lol-id-tools = {git = "https://git.arbolitoloco.xyz/arbolitoloco/lol_id_tools.git"}
 mwrogue = "^0.1.5"
 lol-qq-parser = {git = "https://github.com/mrtolkien/lol_qq_parser.git"}
 riot-transmute = {git = "https://github.com/Leaguepedia/riot_transmute"}
