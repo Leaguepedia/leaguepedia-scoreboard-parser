@@ -226,6 +226,7 @@ class Parser(object):
             {team_key + 'b': team.endOfGameStats.baronKills},
             {team_key + 't': team.endOfGameStats.turretKills},
             {team_key + 'rh': team.endOfGameStats.riftHeraldKills},
+            {team_key + 'vg': team.endOfGameStats.hordeKills},
             {team_key + 'i': team.endOfGameStats.inhibitorKills},
             {team_key + 'cloud': self.team_drake_count(team, "CLOUD")},
             {team_key + 'infernal': self.team_drake_count(team, "INFERNAL")},
