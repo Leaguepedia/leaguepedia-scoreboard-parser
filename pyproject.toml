@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "leaguepedia-scoreboard-parser"
-version = "0.1.11"
+version = "0.1.12"
 description = ""
 authors = ["RheingoldRiver"]
 packages = [{include = "leaguepedia_sb_parser"}]
@@ -10,7 +10,7 @@ python = "^3.9"
 lol-dto = {git = "https://git.arbolitoloco.xyz/arbolitoloco/lol_dto.git"}
 lol-id-tools = {git = "https://git.arbolitoloco.xyz/arbolitoloco/lol_id_tools.git"}
 mwrogue = "^0.1.5"
-lol-qq-parser = {git = "https://github.com/mrtolkien/lol_qq_parser.git"}
+lol-qq-parser = {git = "https://git.arbolitoloco.xyz/arbolitoloco/lol_qq_parser.git"}
 riot-transmute = {git = "https://github.com/Leaguepedia/riot_transmute"}
 riotwatcher = "^3.2.3"
 bayes_lol_client = "^1.0.0"

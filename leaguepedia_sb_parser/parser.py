@@ -273,7 +273,7 @@ class Parser(object):
             return item.id
 
     def extract_player_args(self, player: LolGamePlayer, team: LolGameTeam):
-        player_name = self.get_player_ingame_name(player.inGameName, self.get_initial_team_name(team))
+        player_name = self.get_player_ingame_name(player, self.get_initial_team_name(team))
         if player.inGameName is not None and player_name is None or player_name == '':
             self.warnings.append('Player name cannot be parsed, using full name of {}'.format(player.inGameName))
             player_name = player.inGameName

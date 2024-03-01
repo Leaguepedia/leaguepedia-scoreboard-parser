@@ -30,13 +30,8 @@ class QQParser(Parser):
     def parse_game(self, url):
         pass
 
-    def get_player_ingame_name(self, ingame_name, team_name):
-        # remove all hanzi characters from team_name
-        # these are like random city names added at the start of the name in 2021 season
-        team_name = re.search(r"[A-Za-z0-9 \.]*$", team_name)[0]
-        if re.search(r"^" + team_name, ingame_name.strip()):
-            return re.sub(r"^" + team_name, "", ingame_name.strip())
-        return re.sub(r"^" + team_name.replace(".", ""), "", ingame_name.strip())
+    def get_player_ingame_name(self, player, team_name):
+        return player.sources.qq.name
 
     def get_initial_team_name(self, team):
         if not hasattr(team.sources, "qq"):

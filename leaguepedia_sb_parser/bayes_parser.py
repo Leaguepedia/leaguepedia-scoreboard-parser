@@ -6,7 +6,8 @@ class BayesParser(Parser):
     statslink = "rpgid"
     version = 5
 
-    def get_player_ingame_name(self, ingame_name, team_name):
+    def get_player_ingame_name(self, player, team_name):
+        ingame_name = player.inGameName
         if ingame_name is None:
             return None
         return " ".join(ingame_name.strip().split(" ")[1:]).strip()

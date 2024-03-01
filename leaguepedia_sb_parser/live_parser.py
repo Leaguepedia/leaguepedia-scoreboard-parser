@@ -58,8 +58,8 @@ class LiveParser(Parser):
         tricode = team.players[0].inGameName.split(" ")[0]
         return tricode
 
-    def get_player_ingame_name(self, ingame_name, team_name):
-        return ingame_name
+    def get_player_ingame_name(self, player, team_name):
+        return player.inGameName
 
     def parse_game(self, platform_game_id):
         game = get_live_game(platform_game_id)
