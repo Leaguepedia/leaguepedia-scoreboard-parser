@@ -5,7 +5,7 @@ from mwrogue.esports_client import EsportsClient
 
 live_sample_ids = ["KR_6273834781", "KR_6273812725", "KR_6261074461"]
 bayes_sample_ids = ["ESPORTSTMNT02_3130849", "ESPORTSTMNT04_2270140"]
-qq_sample_ids = ["9347", "9348"]
+qq_sample_ids = ["9347", "9348", "10787", "10891"]
 site = EsportsClient("lol")
 
 
