@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "leaguepedia-scoreboard-parser"
-version = "0.1.14"
+version = "0.1.15"
 description = ""
 authors = ["RheingoldRiver"]
 packages = [{include = "leaguepedia_sb_parser"}]

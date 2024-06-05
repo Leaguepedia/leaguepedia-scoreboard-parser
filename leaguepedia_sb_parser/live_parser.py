@@ -11,7 +11,7 @@ class LiveParser(Parser):
         "BR1": "AMERICAS",
         "LA1": "AMERICAS",
         "LA2": "AMERICAS",
-        "OC1": "AMERICAS",
+        "OC1": "SEA",
         "KR": "ASIA",
         "VN": "ASIA",
         "VN1": "ASIA",
