@@ -1,8 +1,8 @@
-from leaguepedia_sb_parser.components.fetch_game import get_bayes_game, get_game_from_wiki
+from leaguepedia_sb_parser.components.fetch_game import get_game_from_grid, get_game_from_wiki
 from leaguepedia_sb_parser.parser import Parser
 
 
-class BayesParser(Parser):
+class GridParser(Parser):
     statslink = "rpgid"
     version = 5
 
@@ -34,7 +34,7 @@ class BayesParser(Parser):
         if self.use_leaguepedia_mirror:
             game = get_game_from_wiki(platform_game_id, self.site)
         else:
-            game = get_bayes_game(platform_game_id)
+            game = get_game_from_grid(platform_game_id)
         self.populate_teams(game)
         output = self.parse_one_game(
             game, platform_game_id, key="riot_platform_game_id"

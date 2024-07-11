@@ -14,3 +14,11 @@ class InvalidGameSource(ValueError):
 class InvalidInput(ValueError):
     def __str__(self):
         return "The input format is invalid!"
+
+
+class GameNotFound(Exception):
+    def __init__(self, game_id):
+        self.game_id = game_id
+
+    def __str__(self):
+        return f"The game data for {self.game_id} could not be found!"
