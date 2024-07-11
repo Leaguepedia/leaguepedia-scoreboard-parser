@@ -8,6 +8,8 @@ from .errors import GameNotFound
 
 from mwrogue.esports_client import EsportsClient
 
+import backoff
+
 
 def get_game_from_wiki(platform_game_id, site: EsportsClient):
     try:
@@ -19,16 +21,37 @@ def get_game_from_wiki(platform_game_id, site: EsportsClient):
 
 # TODO: Move this to an external library
 def get_game_from_grid(platform_game_id):
-    def get_file(series_id, game_sequence, file_type):
-        return requests.get(
-            f"https://api.grid.gg/file-download/end-state/riot/series/{series_id}/games/{game_sequence}/{file_type}",
-            headers=headers
-        ).json()
+    class RateLimitException(Exception):
+        pass
 
     headers = {
         "x-api-key": os.environ["GRID_API_KEY"],
         "Accept": "application/json",
     }
+
+    @backoff.on_exception(backoff.expo, RateLimitException, logger=None, max_tries=5)
+    def make_request(method, url, data=None):
+        if method == "GET":
+            response = requests.get(url, headers=headers)
+        else:
+            response = requests.post(url, headers=headers, json=data)
+
+        if "application/json" in response.headers.get("content-type", ""):
+            response_j = response.json()
+            if (
+                    response_j.get("errors") and
+                    response_j["errors"][0].get("extensions") and
+                    response_j["errors"][0]["extensions"].get("errorDetail") == "ENHANCE_YOUR_CALM"
+            ):
+                raise RateLimitException
+
+        return response.json()
+
+    def get_file(series_id, game_sequence, file_type):
+        return make_request(
+            "GET",
+            f"https://api.grid.gg/file-download/end-state/riot/series/{series_id}/games/{game_sequence}/{file_type}"
+        )
 
     game_id_by_external_id_query = """
     query GameIDByExternalID($dataProviderName: String!, $externalGameId: ID!) {
@@ -38,13 +61,13 @@ def get_game_from_grid(platform_game_id):
         )
     }
     """
-    game_id_by_external_id = requests.post("https://api.grid.gg/central-data/graphql", json={
+    game_id_by_external_id = make_request("POST", "https://api.grid.gg/central-data/graphql", data={
         "query": game_id_by_external_id_query,
         "variables": {
             "dataProviderName": "LOL_LIVE",
             "externalGameId": platform_game_id
         }
-    }, headers=headers).json()["data"].get("gameIdByExternalId")
+    })["data"].get("gameIdByExternalId")
 
     if not game_id_by_external_id:
         raise GameNotFound(platform_game_id)
@@ -74,19 +97,19 @@ def get_game_from_grid(platform_game_id):
     }
     """
 
-    series_results = requests.post("https://api.grid.gg/central-data/graphql", json={
+    series_results = make_request("POST", "https://api.grid.gg/central-data/graphql", data={
         "query": series_query,
         "variables": {
             "gameId": [game_id_by_external_id]
         }
-    }, headers=headers).json()["data"]["allSeries"]["edges"]
+    })["data"]["allSeries"]["edges"]
 
     if not series_results:
         raise GameNotFound(platform_game_id)
 
     series_id = series_results[0]["node"]["id"]
 
-    file_list = requests.get(f"https://api.grid.gg/file-download/list/{series_id}", headers=headers).json()["files"]
+    file_list = make_request("GET", f"https://api.grid.gg/file-download/list/{series_id}")["files"]
 
     summary, details = None, None
 
