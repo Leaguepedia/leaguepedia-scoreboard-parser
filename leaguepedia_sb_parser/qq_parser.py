@@ -50,7 +50,7 @@ class QQParser(Parser):
         site = EsportsClient("lol")
         response = site.cargo_client.query(
             tables="MatchScheduleGame=MSG, MatchSchedule=MS",
-            fields="MS.Patch",
+            fields="MS.LegacyPatch=Patch",
             where=f"MSG.MatchHistory = 'https://lpl.qq.com/es/stats.shtml?bmid={match_id}'",
             limit=1,
             join_on="MSG.MatchId=MS.MatchId",
