@@ -228,9 +228,7 @@ class Parser(object):
             {team_key + 't': team.endOfGameStats.turretKills},
             {team_key + 'rh': team.endOfGameStats.riftHeraldKills},
             {team_key + 'vg': team.endOfGameStats.hordeKills},
-            # In patch 15.1 atakhan data is not available for the team that didn't kill it
-            # so we get None in atakhan kills instead of 0
-            {team_key + 'at': team.endOfGameStats.atakhanKills or 0},
+            {team_key + 'at': team.endOfGameStats.atakhanKills},
             {team_key + 'i': team.endOfGameStats.inhibitorKills},
             {team_key + 'cloud': self.team_drake_count(team, "CLOUD")},
             {team_key + 'infernal': self.team_drake_count(team, "INFERNAL")},
