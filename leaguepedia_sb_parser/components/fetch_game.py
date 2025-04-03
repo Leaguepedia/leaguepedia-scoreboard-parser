@@ -36,7 +36,9 @@ def get_game_from_grid(platform_game_id):
         else:
             response = requests.post(url, headers=headers, json=data)
 
-        if "application/json" in response.headers.get("content-type", ""):
+        if response.status_code == 429:
+            raise RateLimitException
+        elif "application/json" in response.headers.get("content-type", ""):
             response_j = response.json()
             if (
                     response_j.get("errors") and
