@@ -29,7 +29,7 @@ def get_game_from_grid(platform_game_id):
         "Accept": "application/json",
     }
 
-    @backoff.on_exception(backoff.expo, RateLimitException, logger=None, max_tries=5)
+    @backoff.on_exception(backoff.expo, RateLimitException, logger=None, max_time=60)
     def make_request(method, url, data=None):
         if method == "GET":
             response = requests.get(url, headers=headers)
