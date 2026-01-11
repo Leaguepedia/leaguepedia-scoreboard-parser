@@ -24,19 +24,24 @@ def get_game_from_grid(platform_game_id):
     class RateLimitException(Exception):
         pass
 
+    class NotFoundException(Exception):
+        pass
+
     headers = {
         "x-api-key": os.environ["GRID_API_KEY"],
         "Accept": "application/json",
     }
 
-    @backoff.on_exception(backoff.expo, RateLimitException, logger=None, max_time=60)
+    @backoff.on_exception(backoff.expo, (RateLimitException, NotFoundException), logger=None, max_time=60)
     def make_request(method, url, data=None):
         if method == "GET":
             response = requests.get(url, headers=headers)
         else:
             response = requests.post(url, headers=headers, json=data)
 
-        if response.status_code == 429:
+        if response.status_code in (403, 404):
+            raise NotFoundException
+        elif response.status_code == 429:
             raise RateLimitException
         elif "application/json" in response.headers.get("content-type", ""):
             response_j = response.json()
