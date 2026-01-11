@@ -19,7 +19,7 @@ class Parser(object):
 
     HEADER_TEXT = "{{{{Scoreboard/Header|{}|{}}}}}"
 
-    GAME_TEXT = '{{{{Scoreboard/Season 8{}\n{}\n}}}}'
+    GAME_TEXT = '{{{{Scoreboard/Season 16{}\n{}\n}}}}'
 
     TEAM_KEYS = {'team1': 0, 'team2': 1}
 
@@ -297,6 +297,7 @@ class Parser(object):
             {'primary': self.rune_tree_handler.get_primary_tree_name(player.runes) if self.should_get_rune_names(player) else None},
             {'secondary': self.rune_tree_handler.get_secondary_tree_name(player.runes) if self.should_get_rune_names(player) else None},
             {'trinket': player.endOfGameStats.items[-1].name},
+            {'role_bound_item': player.endOfGameStats.roleBoundItem.name},
 
             # keep this last so it's consecutive with pentakillvod
             {'pentakills': player.endOfGameStats.pentaKills},
