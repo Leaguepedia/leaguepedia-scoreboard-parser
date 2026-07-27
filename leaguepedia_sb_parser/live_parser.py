@@ -1,4 +1,4 @@
-from leaguepedia_sb_parser.components.fetch_game import get_live_game
+from leaguepedia_sb_parser.components.fetch_game import get_riot_game_from_live
 from leaguepedia_sb_parser.parser import Parser
 
 
@@ -62,7 +62,7 @@ class LiveParser(Parser):
         return player.inGameName
 
     def parse_game(self, platform_game_id):
-        game = get_live_game(platform_game_id)
+        game = get_riot_game_from_live(platform_game_id)
         self.determine_teams_from_wiki(platform_game_id)
         output = self.parse_one_game(
             game, platform_game_id, key="riot_platform_game_id"
