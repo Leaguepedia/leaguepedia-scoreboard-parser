@@ -225,19 +225,24 @@ resolved_reference = "f8cd796ffb04d6c536fa88c28980c6fa2628fe28"
 
 [[package]]
 name = "mwcleric"
-version = "0.10.4"
+version = "0.10.7"
 description = "River's mwclient wrapper"
 optional = false
 python-versions = ">=3.6"
 groups = ["main"]
-files = [
-    {file = "mwcleric-0.10.4.tar.gz", hash = "sha256:954f3129990775fd94003d86989420e9b5e222431d6bc1a2110cfc68ac20fb51"},
-]
+files = []
+develop = false
 
 [package.dependencies]
 mwclient = ">=0.10.1"
 mwparserfromhell = "*"
 pytz = "*"
+
+[package.source]
+type = "git"
+url = "https://github.com/Leaguepedia/mwcleric.git"
+reference = "leaguepedia_fixes"
+resolved_reference = "4b9f62d37e9e02a65863856ac7b5a7c25fa4aa98"
 
 [[package]]
 name = "mwclient"
@@ -775,4 +780,4 @@ zstd = ["backports-zstd (>=1.0.0) ; python_version < \"3.14\""]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10"
-content-hash = "bc8f302e6c4af95e4ee727848c2a3b970b78285413df1aef573b060200db7c8e"
+content-hash = "b14d493614630c16c0deb7fc5c0fcad88b9e7782a62746f8b858e5bed285ecca"
