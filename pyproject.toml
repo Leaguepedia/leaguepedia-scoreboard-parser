@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "leaguepedia-scoreboard-parser"
-version = "0.1.25"
+version = "0.1.26"
 description = ""
 authors = ["RheingoldRiver"]
 packages = [{include = "leaguepedia_sb_parser"}]
@@ -11,7 +11,7 @@ lol-dto = {git = "https://github.com/Leaguepedia/lol_dto.git"}
 lol-id-tools = {git = "https://github.com/Leaguepedia/lol_id_tools.git"}
 mwcleric = {git = "https://github.com/Leaguepedia/mwcleric.git", branch = "leaguepedia_fixes"}
 mwrogue = {git = "https://github.com/Leaguepedia/mwrogue.git", branch = "leaguepedia_fixes"}
-lol-qq-parser = {git = "https://github.com/Leaguepedia/lol_qq_parser.git", branch = "grid_source"}
+lol-qq-parser = {git = "https://github.com/Leaguepedia/lol_qq_parser.git"}
 riot-transmute = {git = "https://github.com/Leaguepedia/riot_transmute"}
 riotwatcher = "^3.3"
 
