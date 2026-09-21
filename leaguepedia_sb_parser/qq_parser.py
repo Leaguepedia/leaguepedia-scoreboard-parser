@@ -39,7 +39,7 @@ class QQParser(Parser):
             return re.sub(r"^" + team_name, "", ingame_name.strip())
         if re.search(r"^" + team_name.replace(".", ""), ingame_name.strip()):
             return re.sub(r"^" + team_name.replace(".", ""), "", ingame_name.strip())
-        return player.sources.qq.name
+        return player.sources.qq.name.strip()
 
     def get_initial_team_name(self, team):
         if not hasattr(team.sources, "qq"):
