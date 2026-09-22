@@ -36,9 +36,9 @@ class QQParser(Parser):
         team_name = re.search(r"[A-Za-z0-9 \.]*$", team_name)[0]
         ingame_name = player.inGameName
         if re.search(r"^" + team_name, ingame_name.strip()):
-            return re.sub(r"^" + team_name, "", ingame_name.strip())
+            return re.sub(r"^" + team_name, "", ingame_name.strip()).strip()
         if re.search(r"^" + team_name.replace(".", ""), ingame_name.strip()):
-            return re.sub(r"^" + team_name.replace(".", ""), "", ingame_name.strip())
+            return re.sub(r"^" + team_name.replace(".", ""), "", ingame_name.strip()).strip()
         return player.sources.qq.name.strip()
 
     def get_initial_team_name(self, team):
