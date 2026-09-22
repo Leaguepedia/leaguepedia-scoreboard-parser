@@ -33,7 +33,7 @@ class QQParser(Parser):
     def get_player_ingame_name(self, player, team_name):
         # remove all hanzi characters from team_name
         # these are like random city names added at the start of the name in 2021 season
-        team_name = re.search(r"[A-Za-z0-9 \.]*$", team_name)[0]
+        team_name = re.search(r"[A-Za-z0-9\.\s]*$", team_name)[0]
         ingame_name = player.inGameName
         if re.search(r"^" + team_name, ingame_name.strip()):
             return re.sub(r"^" + team_name, "", ingame_name.strip()).strip()
